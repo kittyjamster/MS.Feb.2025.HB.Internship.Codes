@@ -3,7 +3,8 @@
 
 This project was meant to organize specific data of the Tryptophan team members neatly. Data collected included: team member's names, their Slack usernames, email addresses, home countries, disciplines, hobbies, and programming language preferences (between Python and R).
 
-*Note: Some info was not provided by teammates (one team member did not disclose their hobbies).*
+*Note: Some info was not provided by teammates (one team member did not disclose their hobbies).
+Updated Note 02/08/2025: Team member provided their hobbies.*
 
 I, as the R coder, had extra time on my hands and opted to approach this task from two angles. 
 
