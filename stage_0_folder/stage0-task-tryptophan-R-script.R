@@ -30,3 +30,5 @@ print(alt_team_form)
 
 #Mikayla's github can be found here: https://github.com/kittyjamster/MS.Feb.2025.HB.Internship.Codes 
 #Josiah's github can be fount here: https://github.com/Josiah2000/hackbio
+
+#R video explanation can be found here: https://www.linkedin.com/posts/mikayla-sheild_this-past-week-i-have-started-on-a-thrilling-activity-7294079173264879618-ZTmN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEN4G0IB_M52p31ZMg9WsI0NhUGs8jTm6GE
