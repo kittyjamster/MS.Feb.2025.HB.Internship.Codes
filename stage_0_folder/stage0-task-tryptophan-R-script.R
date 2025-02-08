@@ -3,13 +3,13 @@
 
 #opted for data frame format (alternative could be a matrix)
 my.team <- data.frame(
-  Name = c ("Mikayla Sheild", "Valentim", "Josiah", "Happiness"),
-  Slack.UN = c("Mikayla", "José Valentim", "Josiah", "Happiness Ezinna"),
-  email = c("msheild.1218@gmail.com", "jose.valentimfilhoUK@gmail.com", "josiaholubanjo@gmail.com", "ezinnahappiness11@gmail.com"),
-  Country = c("The US", "Brazil", "Nigeria", "Nigeria"),
-  Discipline = c("Genetics & Genomics", "Electronic Engineering", "Biochemistry", "Molecular Parisitology"),
-  Hobbies = c("Reading & writing", "INFO HERE", "Reading", "Reading & Singing"),
-  LanguagePref = c( "R", "Python", "Python", "INFO HERE") #LanguagePref refers to preferred programming language
+  Name = c ("Mikayla Sheild", "Valentim", "Josiah"),
+  Slack.UN = c("Mikayla", "José Valentim", "Josiah"),
+  email = c("msheild.1218@gmail.com", "jose.valentimfilhoUK@gmail.com", "josiaholubanjo@gmail.com"),
+  Country = c("The US", "Brazil", "Nigeria"),
+  Discipline = c("Genetics & Genomics", "Electronic Engineering", "Biochemistry"),
+  Hobbies = c("Reading & writing", "INFO HERE", "Reading"),
+  LanguagePref = c( "R", "Python", "Python") #LanguagePref refers to preferred programming language
 )
 
 #printing my.team info
@@ -19,11 +19,10 @@ print(my.team)
 #alternative structure in matrix format
 alt_team_form <- matrix (c("Mikayla", "msheild.1218@gmail.com", "TheUS", "Genetics&Genomics", "Reading&Writing", "R", 
                            "José Valentim", "jose.valentimfilhoUK@gmail.com", "Brazil", "ElectronicEngineering", "INFO HERE", "Python",
-                           "Josiah", "josiaholubanjo@gmail.com", "Nigeria", "Biochemistry", "Reading", "Python",
-                           "Happiness Ezinna", "ezinnahappiness11@gmail.com", "Nigeria", "Molecular Parisitology", "Reading&Singing", "INFO HERE"), nrow=6, ncol=4)
+                           "Josiah", "josiaholubanjo@gmail.com", "Nigeria", "Biochemistry", "Reading", "Python"), nrow=6, ncol=3)
 
 #team members' names are serving as column names
-colnames(alt_team_form) <- c("Mikayla Sheild", "Valentim", "Josiah", "Happiness")
+colnames(alt_team_form) <- c("Mikayla Sheild", "Valentim", "Josiah")
 rownames(alt_team_form) <- c("Slack.UN", "Email", "Country", "Discipline", "Hobbies", "LanguagePref")
 
 #Printing matrix format
