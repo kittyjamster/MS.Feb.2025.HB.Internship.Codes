@@ -18,7 +18,7 @@ print(my.team)
 #had the time to include an alternate format
 #alternative structure in matrix format
 alt_team_form <- matrix (c("Mikayla", "msheild.1218@gmail.com", "TheUS", "Genetics&Genomics", "Reading&Writing", "R", 
-                           "José Valentim", "jose.valentimfilhoUK@gmail.com", "Brazil", "ElectronicEngineering", "INFO HERE", "Python",
+                           "José Valentim", "jose.valentimfilhoUK@gmail.com", "Brazil", "ElectronicEngineering", "Football", "Python",
                            "Josiah", "josiaholubanjo@gmail.com", "Nigeria", "Biochemistry", "Reading", "Python"), nrow=6, ncol=3)
 
 #team members' names are serving as column names
