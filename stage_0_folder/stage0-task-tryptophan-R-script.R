@@ -8,7 +8,7 @@ my.team <- data.frame(
   email = c("msheild.1218@gmail.com", "jose.valentimfilhoUK@gmail.com", "josiaholubanjo@gmail.com"),
   Country = c("The US", "Brazil", "Nigeria"),
   Discipline = c("Genetics & Genomics", "Electronic Engineering", "Biochemistry"),
-  Hobbies = c("Reading & writing", "INFO HERE", "Reading"),
+  Hobbies = c("Reading & writing", "Football", "Reading"),
   LanguagePref = c( "R", "Python", "Python") #LanguagePref refers to preferred programming language
 )
 
