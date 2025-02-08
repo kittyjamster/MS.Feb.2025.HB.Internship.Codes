@@ -3,7 +3,7 @@
 
 #opted for data frame format (alternative could be a matrix)
 my.team <- data.frame(
-  Name = c ("Mikayla Sheild", "Valentim", "Josiah"),
+  Name = c ("Mikayla Sheild", "José Valentim", "Josiah Oluwaseyi Banjo"),
   Slack.UN = c("Mikayla", "José Valentim", "Josiah"),
   email = c("msheild.1218@gmail.com", "jose.valentimfilhoUK@gmail.com", "josiaholubanjo@gmail.com"),
   Country = c("The US", "Brazil", "Nigeria"),
@@ -19,13 +19,14 @@ print(my.team)
 #alternative structure in matrix format
 alt_team_form <- matrix (c("Mikayla", "msheild.1218@gmail.com", "TheUS", "Genetics&Genomics", "Reading&Writing", "R", 
                            "José Valentim", "jose.valentimfilhoUK@gmail.com", "Brazil", "ElectronicEngineering", "Football", "Python",
-                           "Josiah", "josiaholubanjo@gmail.com", "Nigeria", "Biochemistry", "Reading", "Python"), nrow=6, ncol=3)
+                           "Josiah Oluwaseyi Banjo", "josiaholubanjo@gmail.com", "Nigeria", "Biochemistry", "Reading", "Python"), nrow=6, ncol=3)
 
 #team members' names are serving as column names
-colnames(alt_team_form) <- c("Mikayla Sheild", "Valentim", "Josiah")
+colnames(alt_team_form) <- c("Mikayla Sheild", "José Valentim", "Josiah")
 rownames(alt_team_form) <- c("Slack.UN", "Email", "Country", "Discipline", "Hobbies", "LanguagePref")
 
 #Printing matrix format
 print(alt_team_form)
 
 #Mikayla's github can be found here: https://github.com/kittyjamster/MS.Feb.2025.HB.Internship.Codes 
+#Josiah's github can be fount here: https://github.com/Josiah2000/hackbio
