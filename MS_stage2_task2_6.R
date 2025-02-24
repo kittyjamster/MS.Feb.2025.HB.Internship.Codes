@@ -15,7 +15,6 @@ setwd("C:/Users/Mikitty/Documents/HB_Internship_2025")
 rnaseq_data <- read.table("task_2_6_data.txt", header = TRUE, sep = " ", stringsAsFactors = FALSE)
 
 #volcano plot with unadjusted p-vals
-library(ggplot2) #the easiest method to making a volcano plot in R
     #converting pvals into -log10 pvals (using regular pvals)
 rnaseq_data$negLOG10_pvalue <- -log10(rnaseq_data$pvalue)
 
@@ -23,28 +22,22 @@ rnaseq_data$negLOG10_pvalue <- -log10(rnaseq_data$pvalue)
 rnaseq_data$sig <- ifelse(rnaseq_data$pvalue < 0.01 & rnaseq_data$log2FoldChange > 1, "Upregulated",
                      ifelse(rnaseq_data$pvalue < 0.01 & rnaseq_data$log2FoldChange < -1, "Downregulated",
                             "Not Significant"))
-    #the actual volcano plot
-ggplot(rnaseq_data, aes(x=log2FoldChange, y=negLOG10_pvalue, color = sig)) +
-  geom_point(alpha = 0.6) +
-  scale_color_manual(values = c("Not Significant" = "darkgray", "Upregulated" = "red", "Downregulated" = "blue")) +
-  labs(x = "Log2 Fold Change", y = "-Log10 of P-Value", title = "Gene Regulation Significance") +
-  theme_minimal()
+    #setting plot colors
+colors <- ifelse(rnaseq_data$sig == "Upregulated", "orange", ifelse(rnaseq_data$sig == "Downregulated", "purple", "darkgray"))
 
-#volcano plot with adjusted p-vals
-library(ggplot2) #the easiest method to making a volcano plot in R
-    #converting pvals into -log10 pvals (using adjusted pvals)
-rnaseq_data$negLOG10_padj <- -log10(rnaseq_data$padj)
-
-    #this defines what the significance categories will be: upregulated, downregulated, and not significant
-rnaseq_data$adj_sig <- ifelse(rnaseq_data$padj < 0.01 & rnaseq_data$log2FoldChange > 1, "Upregulated",
-                          ifelse(rnaseq_data$padj < 0.01 & rnaseq_data$log2FoldChange < -1, "Downregulated",
-                                 "Not Significant"))
     #the actual volcano plot
-ggplot(rnaseq_data, aes(x=log2FoldChange, y=negLOG10_pvalue, color = adj_sig)) +
-  geom_point(alpha = 0.6) +
-  scale_color_manual(values = c("Not Significant" = "darkgray", "Upregulated" = "orange", "Downregulated" = "purple")) +
-  labs(x = "Log2 Fold Change", y = "-Log10 of Adjusted P-Value", title = "Adjusted Gene Regulation Significance") +
-  theme_classic()
+plot(rnaseq_data$log2FoldChange, rnaseq_data$negLOG10_pvalue,
+     col = colors,
+     pch = 17,
+     xlab = "Log2 Fold Change",
+     ylab = "-Log10 of P-value (unadjusted)",
+     main = "Gene Regulation Significance")
+    #plot legends
+legend("top",
+       legend = c("Upregulated", "Downregulated", "Not Significant"),
+       col = c("orange", "purple", "darkgrey"),
+       pch = 17)
+
 
 #sorting the most up- and down-regulated genes by p-val & log2foldchange
     #upregulated genes
