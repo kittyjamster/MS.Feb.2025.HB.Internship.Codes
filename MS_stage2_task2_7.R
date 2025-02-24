@@ -7,94 +7,85 @@ setwd("C:/Users/Mikitty/Documents/HB_Internship_2025")
 #importing data
 #data dictonary found here: https://github.com/HackBio-Internship/public_datasets/blob/main/R/nhanes_dd.csv
 nhanes_raw <- read.csv("nhanes.csv")
-nhanes_na_0 <- nhanes_raw
-
-nhanes_na_0[is.na(nhanes_na_0)] <- 0 #NA values should be converted to 0
 
 #histogram 1: BMI Ditribution
-hist(nhanes_na_0$BMI, 
+hist(nhanes_raw$BMI[!is.na(nhanes_raw$BMI)], 
      col= "darkblue", 
      xlab = "BMI",
      main= "BMI Distribution among NHANES Sample", 
      ylim= c(0, 1400))
 #histogram 2: Weight (in kg) distribution
-hist(nhanes_na_0$Weight, 
+hist(nhanes_raw$Weight[!is.na(nhanes_raw$Weight)], 
      col="darkred", 
      xlab = "Weight (kg)", 
      main = "Weight (kg) Distribution among NHANES Sample",
      ylim= c(0, 2000))
 #histogram 3: weight (in lbs) distribution
-nhanes_na_0$Weight_lbs <- nhanes_na_0$Weight * 2.2
-hist(nhanes_na_0$Weight_lbs, 
+nhanes_raw$Weight_lbs <- nhanes_raw$Weight * 2.2
+hist(nhanes_raw$Weight_lbs[!is.na(nhanes_raw$Weight_lbs)], 
      col="darkgreen", 
      xlab = "Weight (lbs)", 
      main = "Weight (lbs) Distribution among NHANES Sample",
      ylim= c(0, 2000),
      xlim = c(0, 500))
 #histogram 4: age (in years) distribution
-hist(nhanes_na_0$Age,
+hist(nhanes_raw$Age[!is.na(nhanes_raw$Age)],
      col = "gold",
      xlab = "Age (in years)",
      main = "Age Distribution among NHANES Sample",
      ylim = c(0, 500))
 
 
-#mean of 60-sec pulse (Disclaimer, any NA values were converted to 0 when proecessin this data set)
-mean_na_0 <- mean(nhanes_na_0$Pulse)
+#mean of 60-sec pulse 
 mean_wo_na <- mean(nhanes_raw$Pulse, na.rm = T)
-print(mean_na_0)
 print(mean_wo_na)
 
-#range for diastolic bp for both na=0 and w/o na
-min_na_0 <- min(nhanes_na_0$BPDia)
-max_na_0 <- max(nhanes_na_0$BPDia)
-
+#range for diastolic w/o na
 min_wo_na <- min(nhanes_raw$BPDia, na.rm = T)
 max_wo_na <- max (nhanes_raw$BPDia, na.rm = T)
 
-paste("Range for diastolic bp when NA = 0 is:", min_na_0, "and", max_na_0)
 paste("Range for diastolic bp when NA isn't considered is:", min_wo_na, "and", max_wo_na)
 
 #Variance & SD for income
-var_na_0 <- var(nhanes_na_0$Income)
 var_wo_na <- var (nhanes_raw$Income, na.rm =T)
-
-sd_na_0 <- sd(nhanes_na_0$Income)
 sd_wo_na <- sd(nhanes_raw$Income, na.rm = T)
 
-paste("When NA = 0 for income, variance is", var_na_0, "and SD is", sd_na_0, ".")
 paste("When NA is excluded for income, variance is", var_wo_na, "and SD is", sd_wo_na, ".")
 
+#omitting NA values from height and weight -> ensures the same data is considered for each of the histograms below
+h_w_omit <- nhanes_raw[!is.na(nhanes_raw$Height) & !is.na(nhanes_raw$Weight), ]
+
+#print(head(h_w))
 #height x weight plot 1; gender 
-plot(nhanes_na_0$Height, nhanes_na_0$Weight,
-     col = c("pink","lightblue")[as.factor(nhanes_na_0$Gender)],
+plot(h_w_omit$Height, h_w_omit$Weight,
+     col = c("pink","lightblue")[as.factor(h_w_omit$Gender)],
      pch= 16,
      xlab = "Height(cm)", ylab = "Weight (kg)",
      main = "NHANES Height-Weight Relationship in Regard to Gender")
 
     #legend for heightxweight gender plot
-legend("left", legend = levels(as.factor(nhanes_na_0$Gender)), 
+legend("left", legend = levels(as.factor(h_w_omit$Gender)), 
        col = c("pink","lightblue"), pch = 16)
 
 #height x weight plot 2: Diabetes
-plot(nhanes_na_0$Height, nhanes_na_0$Weight, 
-     col = as.factor(nhanes_na_0$Diabetes), 
-     pch = 15,
+plot(h_w_omit$Height, h_w_omit$Weight, 
+     col = c("red", "green")[as.factor(h_w_omit$Diabetes)], 
+     pch = 19,
      xlab = "Height (cm)", ylab = "Weight (kg)",
      main = "NHANES Height-Weight Relationship in Regard to Diabetes Status")
 
-legend("topleft", legend = levels(as.factor(nhanes_na_0$Diabetes)), 
-       col = 1:length(levels(as.factor(nhanes_na_0$Diabetes))), pch = 15)
+legend("topleft", legend = levels(as.factor(h_w_omit$Diabetes)), 
+       col = c("red", "green"), pch = 19)
 
 #height x weight plot 3: smoking status
-plot(nhanes_na_0$Height, nhanes_na_0$Weight, 
-     col = as.factor(nhanes_na_0$SmokingStatus), 
+plot(h_w_omit$Height, h_w_omit$Weight, 
+     col = as.factor(h_w_omit$SmokingStatus), 
      pch = 18,
      xlab = "Height (cm)", ylab = "Weight (kg)",
      main = "NHANES Height-Weight Relationship in Regard to Diabetes Status")
 
-legend("topleft", legend = levels(as.factor(nhanes_na_0$SmokingStatus)), 
-       col = 1:length(levels(as.factor(nhanes_na_0$SmokingStatus))), pch = 18)
+legend("topleft", legend = levels(as.factor(h_w_omit$SmokingStatus)), 
+       col = 1:length(levels(as.factor(h_w_omit$SmokingStatus))), pch = 18)
 
           ###Statistical analyses###
 #t-test for age & gender
