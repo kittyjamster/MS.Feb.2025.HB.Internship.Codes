@@ -50,8 +50,8 @@ text(x = aa_freq_bar,
 
 
 #Second method: piechart
-percent_lb <- round((aa_freq/sum(aa_freq))*100,1) #should convert values into percentages
-labels <- paste (names(aa_freq), percent_lb, "%")
+percent_aa <- round((aa_freq/sum(aa_freq))*100,1) #should convert values into percentages
+labels <- paste (names(aa_freq), percent_aa, "%")
 pie(aa_freq, labels=labels, main = "Ammino Acids Freq. Associated w/ Mutations")
 
 
